@@ -1,7 +1,8 @@
 import { ProductsType } from '@/types';
-import React from 'react'
+import React, { Suspense } from 'react'
 import Categories from './Categories';
 import ProductCard from './ProductCard';
+import Link from 'next/link';
 
 const products: ProductsType = [
     {
@@ -116,13 +117,16 @@ const products: ProductsType = [
 
 const ProductList = () => {
     return (
-        <div className='w-full'>
-            <Categories />
+        <div className='w-full space-y-10'>
+            <Suspense fallback={<p>Loading...</p>}>
+                <Categories />
+            </Suspense>
             <div className='grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12'>
                 {products.map(product => (
                     <ProductCard key={product.id} product={product} />
                 ))}
             </div>
+            <Link href="/products" className='text-sm'>View all products</Link>
         </div>
     )
 }
