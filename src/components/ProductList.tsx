@@ -3,6 +3,7 @@ import React, { Suspense } from 'react'
 import Categories from './Categories';
 import ProductCard from './ProductCard';
 import Link from 'next/link';
+import { Loader } from 'lucide-react';
 
 const products: ProductsType = [
     {
@@ -115,10 +116,10 @@ const products: ProductsType = [
     },
 ];
 
-const ProductList = () => {
+const ProductList = ({ category }: { category: string }) => {
     return (
-        <div className='w-full space-y-10'>
-            <Suspense fallback={<p>Loading...</p>}>
+        <div className='space-y-10'>
+            <Suspense fallback={<div className='mx-auto'><Loader className='animate-spin' /></div>}>
                 <Categories />
             </Suspense>
             <div className='grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12'>
@@ -126,7 +127,7 @@ const ProductList = () => {
                     <ProductCard key={product.id} product={product} />
                 ))}
             </div>
-            <Link href="/products" className='text-sm'>View all products</Link>
+            <Link href={category ? `/products/?category=${category}` : `/products`} className='flex justify-end text-sm text-gray-500 hover:underline'>View all products</Link>
         </div>
     )
 }
