@@ -28,11 +28,11 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         </div>
       </Link>
       {/* Details */}
-      <div className='flex flex-col gap-4 p-4'>
+      <div className='flex flex-col gap-2 p-4'>
         <h1 className='font-medium'>{product.name}</h1>
-        <p className='text-sm text-gray-500'>{product.shortDescription}</p>
+        <p className='text-xs text-gray-500'>{product.shortDescription}</p>
         {/* Size and Color */}
-        <div className='flex items-center gap-4 text-xs'>
+        <div className='flex flex-col sm:flex-row sm:items-center gap-4 text-xs'>
           <div className="flex flex-col gap-1">
             <span className='text-gray-500'>Size</span>
             <select name="size" id="size" onChange={(e) => handleProductType({ type: "size", value: e.target.value })} className='ring ring-gray-300 rounded-md px-2 py-1 outline-none'>
@@ -53,10 +53,9 @@ const ProductCard = ({ product }: { product: ProductType }) => {
           </div>
         </div>
         {/* Price and Button */}
-        <div className='flex items-center justify-between'>
+        <div className='flex flex-col sm:flex-row sm:items-center gap-2 justify-between'>
           <p className='font-medium'>${product.price.toFixed(2)}</p>
-          <button
-            className='flex items-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black duration-200'>
+          <button className='w-fit flex items-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black duration-200'>
             <ShoppingCart className='size-4' />Add to Cart
           </button>
         </div>

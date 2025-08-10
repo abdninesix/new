@@ -122,7 +122,7 @@ const ProductList = ({ category }: { category: string }) => {
             <Suspense fallback={<div className='mx-auto'><Loader className='animate-spin' /></div>}>
                 <Categories />
             </Suspense>
-            <div className='grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12'>
+            <div className='grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5'>
                 {products.map(product => (
                     <ProductCard key={product.id} product={product} />
                 ))}
