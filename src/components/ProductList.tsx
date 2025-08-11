@@ -4,6 +4,7 @@ import Categories from './Categories';
 import ProductCard from './ProductCard';
 import Link from 'next/link';
 import { Loader } from 'lucide-react';
+import Filter from './Filter';
 
 const products: ProductsType = [
     {
@@ -116,18 +117,19 @@ const products: ProductsType = [
     },
 ];
 
-const ProductList = ({ category }: { category: string }) => {
+const ProductList = ({ category, params }: { category: string, params: "homepage" | "products" }) => {
     return (
-        <div className='space-y-10'>
+        <div className='mt-10'>
             <Suspense fallback={<div className='mx-auto'><Loader className='animate-spin' /></div>}>
                 <Categories />
+                {params === "products" && <Filter />}
             </Suspense>
             <div className='grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5'>
                 {products.map(product => (
                     <ProductCard key={product.id} product={product} />
                 ))}
             </div>
-            <Link href={category ? `/products/?category=${category}` : `/products`} className='flex justify-end text-sm text-gray-500 hover:underline'>View all products</Link>
+            <Link href={category ? `/products/?category=${category}` : `/products`} className='mt-10 flex justify-end text-sm text-gray-500 hover:underline'>View all products</Link>
         </div>
     )
 }

@@ -6,11 +6,11 @@ const Homepage = async ({searchParams}:{searchParams: Promise<{category: string}
 const  category = (await searchParams).category;
 
   return (
-    <div className='space-y-20'>
+    <div>
       <div className="relative aspect-[3/1]">
         <Image src="/featured.png" alt='banner' fill className='size-6 md:size-9' />
       </div>
-      <ProductList category={category} />
+      <ProductList category={category} params="homepage" />
     </div>
   )
 }
