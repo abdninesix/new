@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "TrendyStore",
-  description: "A place to style your life",
+  description: "Show your style with trendy products",
   icons: {
     icon: "/logo.png",
   }

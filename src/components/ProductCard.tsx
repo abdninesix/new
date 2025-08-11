@@ -25,10 +25,13 @@ const ProductCard = ({ product }: { product: ProductType }) => {
       {/* Image */}
       <Link href={`/product/${product.id}`}>
         <div className='relative aspect-[2/3] bg-gray-50'>
-          <Image key={productTypes.color} src={product.images[productTypes.color]} alt={product.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33v' className="object-cover transition-opacity duration-500 opacity-0"
-            onLoadingComplete={(img) => {
-              img.classList.remove("opacity-0");
-            }} />
+          <Image
+            key={productTypes.color}
+            src={product.images[productTypes.color]}
+            alt={product.name}
+            fill
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33v' className="object-cover transition-opacity duration-500 opacity-0"
+            onLoad={(e) => e.currentTarget.classList.remove("opacity-0")} />
         </div>
       </Link>
 
