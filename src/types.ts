@@ -1,3 +1,4 @@
+// Types for products
 export type ProductType = {
     id: string | number;
     name: string;
@@ -10,3 +11,12 @@ export type ProductType = {
 };
 
 export type ProductsType = ProductType[];
+
+// Types for cart
+export type CartItemType = ProductType & {
+    quantity: number;
+    selectedSize: string;
+    selectedColor: string;
+};
+
+export type CartItemsType = CartItemType[];

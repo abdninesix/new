@@ -44,7 +44,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         <div className='flex flex-col sm:flex-row sm:items-center gap-2 text-xs'>
           <div className="flex flex-col gap-1">
             <span className='text-gray-500'>Size</span>
-            <select name="size" id="size" onChange={(e) => handleProductType({ type: "size", value: e.target.value })} className='ring ring-gray-300 rounded-md px-2 py-1 outline-none'>
+            <select name="size" id="size" onChange={(e) => handleProductType({ type: "size", value: e.target.value })} className='ring ring-gray-300 rounded-md px-2 py-1'>
               {product.sizes.map((size) => (
                 <option key={size} value={size}>{size.toUpperCase()}</option>
               ))}
@@ -52,11 +52,11 @@ const ProductCard = ({ product }: { product: ProductType }) => {
           </div>
           <div className="flex flex-col gap-1">
             <span className='text-gray-500'>Color</span>
-            <div className='flex  items-center gap-2'>
+            <div className='flex flex-wrap  items-center gap-2'>
               {product.colors.map((color) => (
-                <div key={color} onClick={() => handleProductType({ type: "color", value: color })} className={`duration-300 cursor-pointer border-2 rounded-full p-[1.5px] ${productTypes.color === color ? "border-gray-400" : "border-gray-100"}`}>
+                <button key={color} onClick={() => handleProductType({ type: "color", value: color })} className={`duration-300 cursor-pointer border-2 rounded-full p-[1.5px] ${productTypes.color === color ? "border-gray-500" : "border-gray-200"}`}>
                   <div className='size-6 rounded-full' style={{ backgroundColor: color }} />
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -65,7 +65,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         {/* Price and Button */}
         <div className='flex flex-col sm:flex-row sm:items-center gap-2 justify-between'>
           <p className='font-medium'>${product.price.toFixed(2)}</p>
-          <button className='sm:w-fit flex items-center justify-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-sm px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black duration-200'>
+          <button className='sm:w-fit flex items-center justify-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-sm px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-gray-800 duration-200'>
             <ShoppingCart className='size-4' />Add to Cart
           </button>
         </div>
