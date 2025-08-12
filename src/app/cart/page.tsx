@@ -46,7 +46,8 @@ const cartItems: CartItemsType = [
 import PaymentForm from '@/components/PaymentForm'
 import ShippingForm from '@/components/ShippingForm'
 import { CartItemsType } from '@/types'
-import { ArrowRight, ChevronRight, Trash2 } from 'lucide-react'
+import { ArrowRight, Trash2 } from 'lucide-react'
+import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import React, { Suspense, useState } from 'react'
 
@@ -65,12 +66,12 @@ function CartContent() {
       <h1 className='text-2xl font-medium'>Your Shopping Cart</h1>
 
       {/* Steps */}
-      <div className='flex flex-col lg:flex-row items-center gap-8'>
+      <div className='flex items-center gap-6'>
         {steps.map((step) => (
           <React.Fragment key={step.id}>
-            <ChevronRight className={`hidden lg:block ${activeStep === step.id ? "text-gray-800" : "text-gray-300"}`} />
+            <ArrowRight className={`hidden lg:block ${activeStep === step.id ? "text-gray-800" : "text-gray-300"}`} />
             <div className={`flex items-center gap-4 border-b-2 pb-4 ${activeStep === step.id ? "border-gray-800" : "border-gray-300"}`}>
-              <div className={`flex items-center justify-center text-white w-8 h-8 rounded-full ${activeStep === step.id ? "bg-gray-800" : "bg-gray-300"}`}>
+              <div className={`flex items-center justify-center text-white size-4 p-4 rounded-full ${activeStep === step.id ? "bg-gray-800" : "bg-gray-300"}`}>
                 {step.id}
               </div>
               <span className={`font-medium ${activeStep === step.id ? "text-gray-800" : "text-gray-300"}`}>{step.title}</span>
@@ -86,9 +87,19 @@ function CartContent() {
         <div className="w-full lg:w-7/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8">
           {activeStep === 1 ? (
             cartItems.map((item) => (
-              <div key={item.id} className='flex items-center justify-between'>
-                <div></div>
-                <button className='size-8 rounded-full bg-red-100 hover:bg-red-200 duration-200 text-red-400 flex items-center justify-center cursor-pointer'><Trash2 className='size-3' /></button>
+              <div key={item.id} className='flex items-start justify-between'>
+                <div className='flex gap-8'>
+                  <div className='relative size-28 p-6 rounded-lg overflow-hidden'>
+                    <Image src={item.images[item.selectedColor]} alt={item.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33v' className='object-cover' />
+                  </div>
+                  <div className='flex flex-col gap-1'>
+                    <p className="text-sm font-medium">{item.name}</p>
+                    <p className="text-xs texy-gray-500">Quantity: {item.quantity}</p>
+                    <p className="text-xs texy-gray-500">Size: {item.selectedSize}</p>
+                    <p className="text-xs texy-gray-500">Color: {item.selectedColor}</p>
+                  </div>
+                </div>
+                <button className='size-8 rounded-full bg-red-100 hover:bg-red-200 duration-200 text-red-400 flex items-center justify-center cursor-pointer'><Trash2 className='size-4' /></button>
               </div>
             ))
           ) :
@@ -118,7 +129,7 @@ function CartContent() {
               <span className="font-medium">${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</span>
             </div>
           </div>
-          {activeStep === 1 && <button onClick={() => router.push("/cart?step=2", { scroll: false })} className='w-full bg-gray-800 hover:bg-gray-900 text-white rounded-lg cursor-pointer flex items-center justify-center gap-2 p-2 duration-200'>Continue<ArrowRight className='size-5' /></button>}
+          {activeStep === 1 && <button onClick={() => router.push("/cart?step=2", { scroll: false })} className='flex items-center justify-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-sm p-2 text-sm cursor-pointer text-white bg-gray-800 hover:bg-gray-950 duration-200'>Continue<ArrowRight className='size-5' /></button>}
         </div>
       </div>
 
