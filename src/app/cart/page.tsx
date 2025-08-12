@@ -48,9 +48,9 @@ import ShippingForm from '@/components/ShippingForm'
 import { CartItemsType } from '@/types'
 import { ArrowRight, ChevronRight, Trash2 } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 
-const Cartpage = () => {
+function CartContent() {
 
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -123,6 +123,14 @@ const Cartpage = () => {
       </div>
 
     </div>
+  )
+}
+
+const Cartpage = () => {
+  return (
+    <Suspense fallback={<div>Loading cart...</div>}>
+      <CartContent />
+    </Suspense>
   )
 }
 
