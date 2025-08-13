@@ -4,9 +4,9 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className='mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-center md:items-start md:justify-between gap-8 bg-gray-800 text-gray-400 rounded-lg p-8'>
-            <div className='flex flex-col gap-4 items-center md:items-start'>
-                <Link href="/" className='flex items-center tracking-wide text-md font-medium text-yellow-500'>
+        <div className='mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-start md:justify-between gap-8 bg-gray-800 text-gray-400 text-sm rounded-lg p-8'>
+            <div className='flex flex-col gap-4'>
+                <Link href="/" className='flex items-center tracking-wide text-lg font-semibold text-yellow-500'>
                     <Image src="/logo.png" alt='logo' width={36} height={36} className='size-6 md:size-9' />
                     <p>TRENDY.SHOP</p>
                 </Link>
@@ -14,24 +14,24 @@ const Footer = () => {
                 <p className='text-sm'>All rights reserved.</p>
             </div>
 
-            <div className='flex flex-col gap-4 text-sm items-center md:items-start'>
-                <p className='text-amber-50'>Links</p>
+            <div className='flex flex-col gap-4'>
+                <p className='text-white'>Links</p>
                 <Link href="/">Home</Link>
                 <Link href="/">Contact</Link>
                 <Link href="/">Terms of Service</Link>
                 <Link href="/">Privacy Policy</Link>
             </div>
 
-            <div className='flex flex-col gap-4 text-sm items-center md:items-start'>
-                <p className='text-amber-50'>Products</p>
+            <div className='flex flex-col gap-4'>
+                <p className='text-white'>Products</p>
                 <Link href="/">All Products</Link>
                 <Link href="/">New Arrivals</Link>
                 <Link href="/">Nest Sellers</Link>
                 <Link href="/">Sale</Link>
             </div>
 
-            <div className='flex flex-col gap-4 text-sm items-center md:items-start'>
-                <p className='text-amber-50'>Company</p>
+            <div className='flex flex-col gap-4'>
+                <p className='text-white'>Company</p>
                 <Link href="/">About</Link>
                 <Link href="/">Contact</Link>
                 <Link href="/">Blog</Link>

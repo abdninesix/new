@@ -65,7 +65,7 @@ const Categories = () => {
   return (
     <div className='grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 p-2 bg-gray-100 rounded-lg mb-4 text-sm'>
       {categories.map((category) => (
-        <button key={category.name} onClick={() => handleChange(category.slug)} className={`${category.slug === selectedCategory && "bg-white"} grid grid-cols-2 sm:flex items-center justify-center gap-2 cursor-pointer px-2 py-1 hover:bg-white duration-200 rounded-md`}>
+        <button key={category.name} onClick={() => handleChange(category.slug)} className={`${category.slug === selectedCategory && "bg-white"} flex items-center justify-start gap-2 cursor-pointer px-2 py-1 hover:bg-white duration-200 rounded-md`}>
           {category.icon} {category.name}
         </button>
       ))}

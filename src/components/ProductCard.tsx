@@ -54,7 +54,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             <span className='text-gray-500'>Color</span>
             <div className='flex flex-wrap  items-center gap-2'>
               {product.colors.map((color) => (
-                <button key={color} onClick={() => handleProductType({ type: "color", value: color })} className={`duration-300 cursor-pointer border-2 rounded-full p-[1.5px] ${productTypes.color === color ? "border-gray-500" : "border-gray-200"}`}>
+                <button key={color} onClick={() => handleProductType({ type: "color", value: color })} className={`duration-300 cursor-pointer border-2 rounded-full p-[1.5px] ${productTypes.color === color ? "border-gray-400" : "border-gray-200"}`}>
                   <div className='size-6 rounded-full' style={{ backgroundColor: color }} />
                 </button>
               ))}
