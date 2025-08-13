@@ -1,24 +1,16 @@
+import { ShippingFormInputs, shippingFormSchema } from '@/types'
+import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
+import { useForm } from 'react-hook-form'
 
 const ShippingForm = () => {
+
+  const { register, handleSubmit, formState: { errors } } = useForm<ShippingFormInputs>({
+    resolver: zodResolver(shippingFormSchema)
+  })
+
   return (
-    <div>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-        <h1>Shipping form</h1>
-    </div>
+    <form className='flex flex-col gap-4'>Hi</form>
   )
 }
 

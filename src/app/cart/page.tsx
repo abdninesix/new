@@ -66,15 +66,15 @@ function CartContent() {
       <h1 className='text-2xl font-medium'>Your Shopping Cart</h1>
 
       {/* Steps */}
-      <div className='flex items-center gap-6'>
+      <div className='flex items-center gap-2 sm:gap-6'>
         {steps.map((step) => (
           <React.Fragment key={step.id}>
             <ArrowRight className={`hidden lg:block ${activeStep === step.id ? "text-gray-800" : "text-gray-300"}`} />
             <div className={`flex items-center gap-4 border-b-2 pb-4 ${activeStep === step.id ? "border-gray-800" : "border-gray-300"}`}>
-              <div className={`flex items-center justify-center text-white size-4 p-4 rounded-full ${activeStep === step.id ? "bg-gray-800" : "bg-gray-300"}`}>
+              <div className={`flex items-center justify-center text-white size-4 lg:size-8 p-3 rounded-full ${activeStep === step.id ? "bg-gray-800" : "bg-gray-300"}`}>
                 {step.id}
               </div>
-              <span className={`font-medium ${activeStep === step.id ? "text-gray-800" : "text-gray-300"}`}>{step.title}</span>
+              <span className={`font-medium text-xs lg:text-base ${activeStep === step.id ? "text-gray-800" : "text-gray-300"}`}>{step.title}</span>
             </div>
           </React.Fragment>
         ))}
@@ -92,11 +92,14 @@ function CartContent() {
                   <div className='relative size-28 p-6 rounded-lg overflow-hidden'>
                     <Image src={item.images[item.selectedColor]} alt={item.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33v' className='object-cover' />
                   </div>
-                  <div className='flex flex-col gap-1'>
-                    <p className="text-sm font-medium">{item.name}</p>
-                    <p className="text-xs texy-gray-500">Quantity: {item.quantity}</p>
-                    <p className="text-xs texy-gray-500">Size: {item.selectedSize}</p>
-                    <p className="text-xs texy-gray-500">Color: {item.selectedColor}</p>
+                  <div className='flex flex-col justify-between'>
+                    <div className='flex flex-col gap-1'>
+                      <p className="text-sm font-medium">{item.name}</p>
+                      <p className="text-xs texy-gray-500">Quantity: {item.quantity}</p>
+                      <p className="text-xs texy-gray-500">Size: {item.selectedSize}</p>
+                      <p className="text-xs texy-gray-500">Color: {item.selectedColor}</p>
+                    </div>
+                    <span className="font-medium">${item.price.toFixed(2)}</span>
                   </div>
                 </div>
                 <button className='size-8 rounded-full bg-red-100 hover:bg-red-200 duration-200 text-red-400 flex items-center justify-center cursor-pointer'><Trash2 className='size-4' /></button>
