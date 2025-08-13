@@ -106,7 +106,7 @@ function CartContent() {
               </div>
             ))
           ) :
-            activeStep === 2 ? (<ShippingForm />) : (
+            activeStep === 2 ? (<ShippingForm setShippingForm={setShippingForm} />) : (
               activeStep === 3 && shippingForm ? <PaymentForm /> : <p className='text-sm text-gray-500'>Please fill in the shipping form to continue.</p>)}
         </div>
 
@@ -132,7 +132,7 @@ function CartContent() {
               <span className="font-medium">${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</span>
             </div>
           </div>
-          {activeStep === 1 && <button onClick={() => router.push("/cart?step=2", { scroll: false })} className='flex items-center justify-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-sm p-2 text-sm cursor-pointer text-white bg-gray-800 hover:bg-gray-950 duration-200'>Continue<ArrowRight className='size-5' /></button>}
+          {activeStep === 1 && <button onClick={() => router.push("/cart?step=2")} className='flex items-center justify-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-sm p-2 text-sm cursor-pointer text-white bg-gray-800 hover:bg-gray-950 duration-200'>Continue<ArrowRight className='size-5' /></button>}
         </div>
       </div>
 
