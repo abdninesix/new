@@ -32,14 +32,14 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     <div className='overflow-hidden rounded-lg shadow-lg'>
 
       {/* Image */}
-      <Link href={`/product/${product.id}`}>
+      <Link href={`/products/${product.id}`}>
         <div className='relative aspect-[2/3] bg-gray-50'>
           <Image
             key={productTypes.color}
             src={product.images[productTypes.color]}
             alt={product.name}
             fill
-            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33v' className="object-cover transition-opacity duration-500 opacity-0"
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33v' className="object-cover hover:scale-105 opacity-0 duration-300"
             onLoad={(e) => e.currentTarget.classList.remove("opacity-0")} />
         </div>
       </Link>

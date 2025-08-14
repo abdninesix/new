@@ -6,45 +6,46 @@ const steps = [
   { id: 3, title: "Payment Method" },
 ]
 
-const cartItems: CartItemsType = [
-  {
-    id: 1,
-    name: "Adidas CoreFit T-Shirt",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    price: 39.9,
-    sizes: ["s", "m", "l", "xl", "xxl"],
-    colors: ["gray", "purple", "green"],
-    images: {
-      gray: "/products/1g.png",
-      purple: "/products/1p.png",
-      green: "/products/1gr.png",
-    },
-    quantity: 1,
-    selectedSize: "s",
-    selectedColor: "gray",
-  },
-  {
-    id: 2,
-    name: "Puma Ultra Warm Zip",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    price: 59.9,
-    sizes: ["s", "m", "l", "xl"],
-    colors: ["gray", "green"],
-    images: { gray: "/products/2g.png", green: "/products/2gr.png" },
-    quantity: 3,
-    selectedSize: "m",
-    selectedColor: "green",
-  },
-]
+// const cartItems: CartItemsType = [
+//   {
+//     id: 1,
+//     name: "Adidas CoreFit T-Shirt",
+//     shortDescription:
+//       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+//     description:
+//       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+//     price: 39.9,
+//     sizes: ["s", "m", "l", "xl", "xxl"],
+//     colors: ["gray", "purple", "green"],
+//     images: {
+//       gray: "/products/1g.png",
+//       purple: "/products/1p.png",
+//       green: "/products/1gr.png",
+//     },
+//     quantity: 1,
+//     selectedSize: "s",
+//     selectedColor: "gray",
+//   },
+//   {
+//     id: 2,
+//     name: "Puma Ultra Warm Zip",
+//     shortDescription:
+//       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+//     description:
+//       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+//     price: 59.9,
+//     sizes: ["s", "m", "l", "xl"],
+//     colors: ["gray", "green"],
+//     images: { gray: "/products/2g.png", green: "/products/2gr.png" },
+//     quantity: 3,
+//     selectedSize: "m",
+//     selectedColor: "green",
+//   },
+// ]
 
 import PaymentForm from '@/components/PaymentForm'
 import ShippingForm from '@/components/ShippingForm'
+import useCartStore from '@/stores/cartStore'
 import { CartItemsType, ShippingFormInputs } from '@/types'
 import { ArrowRight, Trash2 } from 'lucide-react'
 import Image from 'next/image'
@@ -58,6 +59,8 @@ function CartContent() {
   const [shippingForm, setShippingForm] = useState<ShippingFormInputs>()
 
   const activeStep = parseInt(searchParams.get("step") || "1")
+
+  const { cart, removeFromCart, clearCart } = useCartStore()
 
   return (
     <div className='flex flex-col gap-8 items-center justify-center mt-12'>
@@ -86,8 +89,8 @@ function CartContent() {
         {/* Left */}
         <div className="w-full lg:w-7/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8">
           {activeStep === 1 ? (
-            cartItems.map((item) => (
-              <div key={item.id} className='flex items-start justify-between'>
+            cart.map((item) => (
+              <div key={item.id + item.selectedSize + item.selectedColor} className='flex items-start justify-between'>
                 <div className='flex gap-8'>
                   <div className='relative size-28 p-6 rounded-lg overflow-hidden'>
                     <Image src={item.images[item.selectedColor]} alt={item.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33v' className='object-cover' />
@@ -102,12 +105,12 @@ function CartContent() {
                     <span className="font-medium">${item.price.toFixed(2)}</span>
                   </div>
                 </div>
-                <button className='size-8 rounded-full bg-red-100 hover:bg-red-200 duration-200 text-red-400 flex items-center justify-center cursor-pointer'><Trash2 className='size-4' /></button>
+                <button onClick={() => removeFromCart(item)} className='size-8 rounded-full bg-red-100 hover:bg-red-200 duration-200 text-red-400 flex items-center justify-center cursor-pointer'><Trash2 className='size-4' /></button>
               </div>
             ))
           ) :
             activeStep === 2 ? (<ShippingForm setShippingForm={setShippingForm} />) : (
-              activeStep === 3 && shippingForm ? <PaymentForm /> : <p className='text-sm text-gray-500'>Please fill in the shipping form to continue.</p>)}
+              activeStep === 3 && shippingForm ? <PaymentForm /> : <p className='text-sm text-red-500'>Please fill in the shipping form to continue.</p>)}
         </div>
 
         {/* Right */}
@@ -116,7 +119,7 @@ function CartContent() {
           <div className='flex flex-col gap-4 text-sm'>
             <div className='flex justify-between'>
               <span className="text-gray-500">Subtotal</span>
-              <span className="font-medium">${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</span>
+              <span className="font-medium">${cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</span>
             </div>
             <div className='flex justify-between'>
               <span className="text-gray-500">Discount</span>
@@ -129,7 +132,7 @@ function CartContent() {
             <hr className='border-gray-300' />
             <div className='flex justify-between font-medium'>
               <span className="text-gray-800 text-base">Total</span>
-              <span className="font-medium">${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</span>
+              <span className="font-medium">${cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</span>
             </div>
           </div>
           {activeStep === 1 && <button onClick={() => router.push("/cart?step=2")} className='flex items-center justify-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-sm p-2 text-sm cursor-pointer text-white bg-gray-800 hover:bg-gray-950 duration-200'>Continue<ArrowRight className='size-5' /></button>}

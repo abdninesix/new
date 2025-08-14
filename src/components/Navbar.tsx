@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import SearchBar from './SearchBar'
-import { Bell, Home } from 'lucide-react'
+import { Bell, Home, LogIn } from 'lucide-react'
 import CartButton from './CartButton'
 
 const Navbar = () => {
@@ -18,7 +18,7 @@ const Navbar = () => {
                 <Link href="/" className='flex items-center gap-2'><Home /></Link>
                 <button><Bell /></button>
                 <CartButton />
-                <Link href="/login">Sign in</Link>
+                <Link href="/login"><LogIn/></Link>
             </div>
         </nav>
     )
