@@ -1,12 +1,16 @@
 "use client"
 
+import useCartStore from '@/stores/cartStore'
 import { ProductType } from '@/types'
 import { ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 
 const ProductCard = ({ product }: { product: ProductType }) => {
+
+  const { addToCart } = useCartStore();
 
   const [productTypes, setProductTypes] = useState({
     size: product.sizes[0],
@@ -17,6 +21,11 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     setProductTypes((prev) => ({
       ...prev, [type]: value,
     }));
+  };
+
+  const handleAddToCart = () => {
+    addToCart({ ...product, quantity: 1, selectedSize: productTypes.size, selectedColor: productTypes.color })
+    toast.success("Product added to cart!")
   };
 
   return (
@@ -65,7 +74,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         {/* Price and Button */}
         <div className='flex flex-col sm:flex-row sm:items-center gap-2 justify-between'>
           <p className='font-medium'>${product.price.toFixed(2)}</p>
-          <button className='sm:w-fit flex items-center justify-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-sm px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-gray-800 duration-200'>
+          <button onClick={handleAddToCart} className='sm:w-fit flex items-center justify-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-sm px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-gray-800 duration-200'>
             <ShoppingCart className='size-4' />Add to Cart
           </button>
         </div>
