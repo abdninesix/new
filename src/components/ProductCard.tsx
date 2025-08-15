@@ -33,7 +33,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
 
       {/* Image */}
       <Link href={`/products/${product.id}`}>
-        <div className='relative aspect-[2/3] bg-gray-50'>
+        <div className='relative aspect-[2/3] p-10 bg-gray-50'>
           <Image
             key={productTypes.color}
             src={product.images[productTypes.color]}

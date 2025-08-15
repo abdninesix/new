@@ -92,7 +92,7 @@ function CartContent() {
             cart.map((item) => (
               <div key={item.id + item.selectedSize + item.selectedColor} className='flex items-start justify-between'>
                 <div className='flex gap-8'>
-                  <div className='relative size-28 p-6 rounded-lg overflow-hidden'>
+                  <div className='relative overflow-hidden rounded-md p-8'>
                     <Image src={item.images[item.selectedColor]} alt={item.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33v' className='object-cover' />
                   </div>
                   <div className='flex flex-col justify-between'>
