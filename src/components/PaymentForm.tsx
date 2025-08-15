@@ -47,6 +47,12 @@ const PaymentForm = () => {
         <Image src="/cards.png" width={50} height={50} alt='cards' className='rounded-md cursor-pointer hover:opacity-90' />
         <Image src="/stripe.png" width={50} height={50} alt='stripe' className='rounded-md cursor-pointer hover:opacity-90' />
       </div>
+      
+      <p className='text-gray-500 text-xs'>By clicking Pay Now, you agree to our{" "}
+        <span className='hover:underline cursor-pointer text-black'>Terms and Conditions</span> and{" "}
+        <span className='hover:underline cursor-pointer text-black'>Privacy Policy</span>{". "}You have authorized us to charge your selected payment method for the total amount shown. All sales are subject to our return and{" "}
+        <span className='hover:underline cursor-pointer text-black'>Refund Policies</span>
+      </p>
 
       <button type='submit' className='flex items-center justify-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-sm p-2 text-sm cursor-pointer text-white bg-gray-800 hover:bg-gray-950 duration-200'>Checkout<ShoppingCart className='size-5' /></button>
 

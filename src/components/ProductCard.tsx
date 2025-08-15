@@ -50,7 +50,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         <p className='text-xs text-gray-500 sm:text-sm'>{product.shortDescription}</p>
 
         {/* Size and Color */}
-        <div className='flex flex-row sm:items-center gap-2 text-xs'>
+        <div className='flex flex-row items-center gap-2 text-xs'>
           <div className="flex flex-col gap-1">
             <span className='text-gray-500'>Size</span>
             <select name="size" id="size" onChange={(e) => handleProductType({ type: "size", value: e.target.value })} className='ring ring-gray-300 rounded-md px-2 py-1'>
@@ -61,7 +61,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
           </div>
           <div className="flex flex-col gap-1">
             <span className='text-gray-500'>Color</span>
-            <div className='flex flex-wrap  items-center gap-2'>
+            <div className='flex flex-wrap gap-2'>
               {product.colors.map((color) => (
                 <button key={color} onClick={() => handleProductType({ type: "color", value: color })} className={`duration-300 cursor-pointer border-2 rounded-full p-[1.5px] ${productTypes.color === color ? "border-gray-400" : "border-gray-200"}`}>
                   <div className='size-6 rounded-full' style={{ backgroundColor: color }} />
