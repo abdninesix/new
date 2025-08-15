@@ -50,7 +50,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         <p className='text-xs text-gray-500 sm:text-sm'>{product.shortDescription}</p>
 
         {/* Size and Color */}
-        <div className='flex flex-col sm:flex-row sm:items-center gap-2 text-xs'>
+        <div className='flex flex-row sm:items-center gap-2 text-xs'>
           <div className="flex flex-col gap-1">
             <span className='text-gray-500'>Size</span>
             <select name="size" id="size" onChange={(e) => handleProductType({ type: "size", value: e.target.value })} className='ring ring-gray-300 rounded-md px-2 py-1'>

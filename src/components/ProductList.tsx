@@ -11,7 +11,7 @@ const products: ProductsType = [
         id: 1,
         name: "Adidas CoreFit T-Shirt",
         shortDescription:
-            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit something something.",
         description:
             "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
         price: 39.9,
@@ -27,7 +27,7 @@ const products: ProductsType = [
         id: 2,
         name: "Puma Ultra Warm Zip",
         shortDescription:
-            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit something something.",
         description:
             "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
         price: 59.9,
@@ -39,7 +39,7 @@ const products: ProductsType = [
         id: 3,
         name: "Nike Air Essentials Pullover",
         shortDescription:
-            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit something something.",
         description:
             "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
         price: 69.9,
@@ -55,7 +55,7 @@ const products: ProductsType = [
         id: 4,
         name: "Nike Dri Flex T-Shirt",
         shortDescription:
-            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit something something.",
         description:
             "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
         price: 29.9,
@@ -67,7 +67,7 @@ const products: ProductsType = [
         id: 5,
         name: "Under Armour StormFleece",
         shortDescription:
-            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit something something.",
         description:
             "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
         price: 49.9,
@@ -83,7 +83,7 @@ const products: ProductsType = [
         id: 6,
         name: "Nike Air Max 270",
         shortDescription:
-            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit something something.",
         description:
             "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
         price: 59.9,
@@ -95,7 +95,7 @@ const products: ProductsType = [
         id: 7,
         name: "Nike Ultraboost Pulse ",
         shortDescription:
-            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit something something.",
         description:
             "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
         price: 69.9,
@@ -107,7 +107,7 @@ const products: ProductsType = [
         id: 8,
         name: "Levi’s Classic Denim",
         shortDescription:
-            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+            "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit something something.",
         description:
             "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
         price: 59.9,
@@ -124,7 +124,7 @@ const ProductList = ({ category, params }: { category: string, params: "homepage
                 <Categories />
                 {params === "products" && <Filter />}
             </Suspense>
-            <div className='grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
                 {products.map(product => (
                     <ProductCard key={product.id} product={product} />
                 ))}
