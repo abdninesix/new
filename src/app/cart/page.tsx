@@ -62,6 +62,13 @@ function CartContent() {
 
   const { cart, removeFromCart, clearCart } = useCartStore()
 
+  if (cart.length === 0) return (
+    <div className='flex flex-col gap-8 items-center justify-center mt-12'>
+      <h1 className='text-2xl font-medium'>Your Shopping Cart</h1>
+      <p className='text-gray-500'>Your cart is currently empty.</p>
+    </div>
+  )
+
   return (
     <div className='flex flex-col gap-8 items-center justify-center mt-12'>
 
@@ -92,17 +99,17 @@ function CartContent() {
             cart.map((item) => (
               <div key={item.id + item.selectedSize + item.selectedColor} className='flex items-start justify-between'>
                 <div className='flex gap-8'>
-                  <div className='relative overflow-hidden rounded-md p-8'>
+                  <div className='relative overflow-hidden rounded-md p-10'>
                     <Image src={item.images[item.selectedColor]} alt={item.name} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33v' className='object-cover' />
                   </div>
                   <div className='flex flex-col justify-between'>
                     <div className='flex flex-col gap-1'>
                       <p className="text-sm font-medium">{item.name}</p>
                       <p className="text-xs texy-gray-500">Quantity: {item.quantity}</p>
-                      <p className="text-xs texy-gray-500">Size: {item.selectedSize}</p>
-                      <p className="text-xs texy-gray-500">Color: {item.selectedColor}</p>
+                      <p className="text-xs texy-gray-500">Size: {item.selectedSize.toUpperCase()}</p>
+                      <div className="flex gap-1 text-xs texy-gray-500">Color: <div className='size-4' style={{ backgroundColor: item.selectedColor }} /></div>
                     </div>
-                    <span className="font-medium">${item.price.toFixed(2)}</span>
+                    <span className="font-medium mt-2">${item.price.toFixed(2)}</span>
                   </div>
                 </div>
                 <button onClick={() => removeFromCart(item)} className='size-8 rounded-full bg-red-100 hover:bg-red-200 duration-200 text-red-400 flex items-center justify-center cursor-pointer'><Trash2 className='size-4' /></button>

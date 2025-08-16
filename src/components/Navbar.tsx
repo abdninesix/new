@@ -7,7 +7,7 @@ import CartButton from './CartButton'
 
 const Navbar = () => {
     return (
-        <nav className='w-full sticky top-0 bg-white/95 flex items-center justify-between border-b border-gray-200 py-3 z-20'>
+        <nav className='w-full sticky top-0 bg-white/95 flex items-center justify-between border-b border-gray-200 pt-4 pb-3 z-20'>
             <Link href="/" className='flex items-center tracking-wide text-lg font-semibold text-yellow-500'>
                 <Image src="/logo.png" alt='logo' width={36} height={36} className='size-6 md:size-9' />
                 <p>TRENDY.SHOP</p>

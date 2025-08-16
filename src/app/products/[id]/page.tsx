@@ -1,6 +1,8 @@
+import ProductInteration from '@/components/ProductInteration';
 import { ProductType } from '@/types';
+import { Loader } from 'lucide-react';
 import Image from 'next/image';
-import React from 'react'
+import React, { Suspense } from 'react'
 
 const product: ProductType =
 {
@@ -38,6 +40,9 @@ const ProductDetails = async ({ params, searchParams }: { params: Promise<{ id: 
         <h1 className='text-2xl font-medium'>{product.name}</h1>
         <p className='text-gray-500'>{product.description}</p>
         <h2 className='text-2xl font-semibold'>${product.price.toFixed(2)}</h2>
+        <Suspense fallback={<div className='mx-auto'><Loader className='animate-spin' /></div>}>
+          <ProductInteration product={product} selectedSize={selectedSize} selectedColor={selectedColor} />
+        </Suspense>
         <div className='flex items-center gap-2 mt-4'>
           <Image src="/klarna.png" width={50} height={50} alt='mastercard' className='rounded-md cursor-pointer hover:opacity-90' />
           <Image src="/cards.png" width={50} height={50} alt='cards' className='rounded-md cursor-pointer hover:opacity-90' />
