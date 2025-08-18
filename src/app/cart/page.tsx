@@ -6,43 +6,6 @@ const steps = [
   { id: 3, title: "Payment Method" },
 ]
 
-// const cartItems: CartItemsType = [
-//   {
-//     id: 1,
-//     name: "Adidas CoreFit T-Shirt",
-//     shortDescription:
-//       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-//     description:
-//       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-//     price: 39.9,
-//     sizes: ["s", "m", "l", "xl", "xxl"],
-//     colors: ["gray", "purple", "green"],
-//     images: {
-//       gray: "/products/1g.png",
-//       purple: "/products/1p.png",
-//       green: "/products/1gr.png",
-//     },
-//     quantity: 1,
-//     selectedSize: "s",
-//     selectedColor: "gray",
-//   },
-//   {
-//     id: 2,
-//     name: "Puma Ultra Warm Zip",
-//     shortDescription:
-//       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-//     description:
-//       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-//     price: 59.9,
-//     sizes: ["s", "m", "l", "xl"],
-//     colors: ["gray", "green"],
-//     images: { gray: "/products/2g.png", green: "/products/2gr.png" },
-//     quantity: 3,
-//     selectedSize: "m",
-//     selectedColor: "green",
-//   },
-// ]
-
 import PaymentForm from '@/components/PaymentForm'
 import ShippingForm from '@/components/ShippingForm'
 import useCartStore from '@/stores/cartStore'
@@ -114,7 +77,7 @@ function CartContent() {
                 </div>
                 <button onClick={() => removeFromCart(item)} className='size-8 rounded-full bg-red-100 hover:bg-red-200 duration-200 text-red-400 flex items-center justify-center cursor-pointer'><Trash2 className='size-4' /></button>
               </div>
-            ))
+              ))
           ) :
             activeStep === 2 ? (<ShippingForm setShippingForm={setShippingForm} />) : (
               activeStep === 3 && shippingForm ? <PaymentForm /> : <p className='text-sm text-red-500'>Please fill in the shipping form to continue.</p>)}
@@ -146,7 +109,7 @@ function CartContent() {
         </div>
       </div>
 
-    </div>
+    </div >
   )
 }
 

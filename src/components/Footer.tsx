@@ -8,7 +8,7 @@ const Footer = () => {
             <div className='flex flex-col gap-4'>
                 <Link href="/" className='flex items-center tracking-wide text-lg font-semibold text-yellow-500'>
                     <Image src="/logo.png" alt='logo' width={36} height={36} className='size-6 md:size-9' />
-                    <p>TRENDY.SHOP</p>
+                    <p>TRENDY.STORE</p>
                 </Link>
                 <p className='text-sm'>&copy; {new Date().getFullYear()} Trendy.Store</p>
                 <p className='text-sm'>All rights reserved.</p>
